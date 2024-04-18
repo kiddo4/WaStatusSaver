@@ -18,10 +18,10 @@ class GetStatusProvider extends ChangeNotifier {
   bool get isWhatsappAvailable => _isWhatsappAvailable;
 
   void getStatus(String ext) async {
-    final status = await Permission.storage.request();
+    final status = await Permission.manageExternalStorage.request();
 
     if (status.isDenied) {
-      Permission.storage.request();
+      Permission.manageExternalStorage.request();
       log("Permission denied");
       return;
     }
